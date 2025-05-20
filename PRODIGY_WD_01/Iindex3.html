@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Day - Where Coffee Meets Perfection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: #fffaf2;
+    color: #3e3e3e;
+}
+
+/* Navigation */
+header {
+    background-color: #3b2f2f;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff7e6;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff7e6;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f9c87a;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #b89f69;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(#742c2c80, rgba(0,0,0,0.5)), url('/api/placeholder/1600/900') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.cta-button {
+    background-color: #f9c87a;
+    color: #3b2f2f;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition:0.3s;
+}
+
+.cta-button:hover {
+    background-color: #f4b740;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 4rem 2rem;
+    background-color: #fff0e1;
+}
+
+.about-text {
+    flex: 1 1 50%;
+    padding: 1rem;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-image {
+    flex: 1 1 50%;
+    padding: 1rem;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 10px;
+}
+
+/* Menu Section */
+.menu {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.menu-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.menu-item {
+    background: #fefefe;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.03);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.menu-item h3 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.menu-item p {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+    color: #555;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: #3b2f2f;
+}
+
+/* Services Section */
+.services {
+    padding: 4rem 2rem;
+    background-color: #fff0e1;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: #fefefe;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: #f4b740;
+    margin-bottom: 1rem;
+}
+
+/* Contact Section */
+.contact {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    color: #3b2f2f;
+}
+
+/* Responsive Nav */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #6a5858;
+        width: 200px;
+        display: none;
+        padding: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Scroll Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">☕ Cafe Day</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Cafe Day</h1>
+            <p>Where every cup tells a story</p>
+            <a href="#menu" class="cta-button">Explore Our Menu</a>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about fade-in">
+        <div class="about-text">
+            <h2>Our Story</h2>
+            <p>Since 2024, Cafe Day has been brewing more than just coffee. We've been creating experiences, fostering connections, and serving happiness one cup at a time.</p>
+            <p>Our commitment to quality, sustainability, and community has made us a beloved destination for coffee enthusiasts and casual visitors alike.</p>
+            <p>From hand-selected beans to expertly crafted beverages, every element of our cafe is designed to provide you with an exceptional experience.</p>
+        </div>
+        <div class="about-image">
+            <img src="asset/c.jpg" alt="About Cafe Day">
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu fade-in">
+        <div class="menu-container">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="asset/c.jpeg" alt="Espresso">
+                    <h3>Espresso</h3>
+                    <p>Rich and bold coffee shot to awaken your senses.</p>
+                    <div class="price">₹150</div>
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c2.jpeg" alt="Latte">
+                    <h3>Latte</h3>
+                    <p>Creamy coffee blend topped with silky foam.</p>
+                    <div class="price">₹180</div>
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c3.jpeg" alt="Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p>A perfect balance of espresso, steamed milk, and foam.</p>
+                    <div class="price">₹170</div>
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c4.jpeg" alt="Mocha">
+                    <h3>Mocha</h3>
+                    <p>A delicious fusion of espresso, chocolate, and steamed milk.</p>
+                    <div class="price">₹190</div>
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c5.jpeg" alt="Americano">
+                    <h3>Americano</h3>
+                    <p>Bold espresso mellowed with hot water for a smooth finish.</p>
+                    <div class="price">₹200</div>
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c6.jpeg" alt="Irish Coffee">
+                    <h3>Irish Coffee</h3>
+                    <p>A spirited mix of hot coffee, Irish whiskey, and a touch of cream.</p>
+                    <div class="price">₹240</div>
+                    
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c7.jpg" alt="Cold brew Coffee">
+                    <h3>Cold brew Coffee</h3>
+                    <p>Slow-steeped coffee served cold for a smooth, refreshing taste.</p>
+                    <div class="price">₹220</div>
+                    
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c8.jpg" alt="Japanese Coffee">
+                    <h3>Japanese Coffee</h3>
+                    <p>Flash-brewed over ice for a crisp and aromatic experience.</p>
+                    <div class="price">₹190</div>
+                    
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c9.jpeg" alt="Marshmallow Coffee">
+                    <h3>Marshmallow Coffee</h3>
+                    <p>A cozy blend of coffee topped with fluffy, melting marshmallows.</p>
+                    <div class="price">₹160</div>
+                    
+                </div>
+                <div class="menu-item">
+                    <img src="asset/c10.jpg" alt="caramel macchiato">
+                    <h3>Caramel Macchiato</h3>
+                    <p>A layered delight of espresso, milk, and luscious caramel drizzle.</p>
+                    <div class="price">₹140</div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services fade-in">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-mug-hot"></i></div>
+                <h3>Fresh Brews</h3>
+                <p>Crafted with passion from hand-picked beans.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-wifi"></i></div>
+                <h3>Free Wi-Fi</h3>
+                <p>Stay connected while you sip your favorite brew.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chair"></i></div>
+                <h3>Cozy Ambience</h3>
+                <p>The perfect place to relax, work, or meet friends.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact fade-in">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Coffee Lane, madurai, India</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>hello@cafeday.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle nav menu on small screens
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll animation on section reveal
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
